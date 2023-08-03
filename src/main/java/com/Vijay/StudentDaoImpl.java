@@ -31,9 +31,10 @@ public class StudentDaoImpl implements StudentDao {
     public void updateStudent(Student updateStudent) throws SQLException {
         String updateQuery = "UPDATE student SET name = ?, email = ? WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
-        preparedStatement.setInt(1, updateStudent.getId());
-        preparedStatement.setString(2, updateStudent.getName());
-        preparedStatement.setString(3, updateStudent.getEmail());
+      
+        preparedStatement.setString(1, updateStudent.getName());
+        preparedStatement.setString(2, updateStudent.getEmail());
+          preparedStatement.setInt(3, updateStudent.getId());
         int rowEffected = preparedStatement.executeUpdate();
         if (rowEffected > 0) {
             System.out.println("User data updated successfully.");
